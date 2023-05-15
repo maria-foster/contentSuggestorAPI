@@ -1,0 +1,8 @@
+[
+    {
+        "bestTimesToPost" : ["9:00 pm", "10:00 am"],
+        "bestDaysToPost" : ["Saturday", "Sunday", "Wednesday"],
+        "words" : ["Taylor Swift", "Eras"],
+        "locations": [ "LA", "Pittsburgh", "Baltimore"]
+    }
+]

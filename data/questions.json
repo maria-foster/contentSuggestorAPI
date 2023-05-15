@@ -1,0 +1,18 @@
+[
+    { 
+        "question" : "What is your most used social media platform?",
+        "type" : "open-ended"
+    },
+    { 
+        "question" : "What category would you consider your social media? ",
+        "type" : "open-ended"
+    },
+    { 
+        "question" : "How many followers do you have?",
+        "type" : "open-ended"
+    },
+    { 
+        "question" : "What is your goal?",
+        "type" : "open-ended"
+    }
+]

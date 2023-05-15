@@ -1,0 +1,5 @@
+twitter:
+  auth: https://api.twitter.com/oauth2/token
+instagram:
+tiktok:
+  v2Endpoint: open.tiktokapis.com
