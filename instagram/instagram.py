@@ -16,10 +16,12 @@ authURL = ""
 accessToken = "" 
 grantType = ""
 
+#  eventually move this out to main file or some sort of config setup 
 def setupLogging():
     logging.basicConfig(filename='out.log', encoding='utf-8', level=logging.DEBUG)
     logging.info(date.today())
 
+#  eventually move this out to main file or some sort of config setup 
 def readConfig():
     logging.info("Starting read Config... ")
     global authURL
@@ -36,6 +38,7 @@ def readConfig():
         except yaml.YAMLError as exc:
             logging.warning(exc)
 
+#  eventually move this out to main file or some sort of config setup 
 def unmarshalSecrets():
     logging.info("Starting Unmarshal Secrets ... ")
     global appID
@@ -48,6 +51,7 @@ def unmarshalSecrets():
         except yaml.YAMLError as exc:
             logging.warning(exc)
 
+#  getting instagram access token
 def getAccessToken():
     global accessToken
     logging.info("Starting Get Access Token")
