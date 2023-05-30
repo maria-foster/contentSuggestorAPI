@@ -1,5 +1,9 @@
 twitter:
   auth: https://api.twitter.com/oauth2/token
 instagram:
+  auth: https://graph.facebook.com/oauth/access_token
+  appID: "?client_id="
+  clientSecret: "&client_secret="
+  grantType: "&grant_type=client_credentials"
 tiktok:
   v2Endpoint: open.tiktokapis.com
