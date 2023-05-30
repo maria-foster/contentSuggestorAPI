@@ -8,13 +8,15 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse
 import pandas as pd
 
+
 appID = ""
 clientSecret = ""
 clientSecretQuery = ""
 appIDQuery = ""
-authURL = ""
+graphAuthURL = ""
 accessToken = "" 
 grantType = ""
+
 
 #  eventually move this out to main file or some sort of config setup 
 def setupLogging():
@@ -24,14 +26,14 @@ def setupLogging():
 #  eventually move this out to main file or some sort of config setup 
 def readConfig():
     logging.info("Starting read Config... ")
-    global authURL
+    global graphAuthURL
     global appIDQuery
     global grantType
     global clientSecretQuery
     with open("./config/config.yaml", "r") as stream:
         try:
             data = yaml.safe_load(stream)
-            authURL = str(data["instagram"]["auth"])
+            graphAuthURL = str(data["instagram"]["graph"]["auth"])
             appIDQuery = str(data["instagram"]["appID"])
             clientSecretQuery = str(data["instagram"]["clientSecret"])
             grantType = str(data["instagram"]["grantType"])
@@ -51,21 +53,8 @@ def unmarshalSecrets():
         except yaml.YAMLError as exc:
             logging.warning(exc)
 
-#  getting instagram access token
-def getAccessToken():
-    global accessToken
-    logging.info("Starting Get Access Token")
-    response = requests.get(authURL +  appIDQuery + appID + clientSecretQuery + clientSecret + grantType  )
-    #  breaking down the response
-    if(response.status_code != 200):
-        return 
-    else:
-        data = response.json()
-        accessToken = data["access_token"]
 
 if __name__ == '__main__':
     setupLogging()
     readConfig()
     unmarshalSecrets()
-    getAccessToken()
-
