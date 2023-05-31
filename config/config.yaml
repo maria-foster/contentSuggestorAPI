@@ -1,10 +1,16 @@
+url: https://riafos.com/
 twitter:
   auth: https://api.twitter.com/oauth2/token
 instagram:
   graph:
     auth: https://graph.facebook.com/oauth/access_token
+  basic:
+    auth: https://api.instagram.com/oauth/authorize
+    authScope: "&scope=user_profile,user_media&response_type=code"
+  redirectURL: "&redirect_uri="
   appID: "?client_id="
   clientSecret: "&client_secret="
   grantType: "&grant_type=client_credentials"
+  generalSearch: https://www.instagram.com/web/search/topsearch/?query=
 tiktok:
   v2Endpoint: open.tiktokapis.com

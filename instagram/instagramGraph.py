@@ -7,12 +7,11 @@ import pandas as pd
 import instagramConfig
 
 
-accessToken = "" 
+graphAccessToken = "" 
 
 #  getting instagram access token
-def getAccessToken():
-    global accessToken
-
+def getGraphAccessToken():
+    global graphAccessToken
     logging.info("Starting Get Access Token")
     response = requests.get(instagramConfig.graphAuthURL +  instagramConfig.appIDQuery + instagramConfig.appID + instagramConfig.clientSecretQuery + instagramConfig.clientSecret + instagramConfig.grantType  )
     #  breaking down the response
@@ -20,11 +19,24 @@ def getAccessToken():
         return 
     else:
         data = response.json()
-        accessToken = data["access_token"]
+        graphAccessToken = data["access_token"]
+
+def generalSearch(searchTerm):
+    logging.info("Starting Get Access Token")
+    # response = requests.get(instagramConfig.generalSearchURL + searchTerm)
+    response = requests.get("https://www.instagram.com/web/search/topsearch/?query=aspynovard")
+    #  breaking down the response
+    if(response.status_code != 200):
+        return 
+    else:
+        data = response.json()
+        print(data)
+
 
 if __name__ == '__main__':
     instagramConfig.setupLogging()
     instagramConfig.readConfig()
     instagramConfig.unmarshalSecrets()
-    getAccessToken()
+    getGraphAccessToken()
+    generalSearch("aspynOvard")
 
